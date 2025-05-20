@@ -1,6 +1,7 @@
 @use "../abstracts/mixins" as mixins;
 
-header .container {
+.mobile__hide_menu {
+  display: none;
   @include mixins.respond(md) {
   }
 

@@ -1,13 +1,26 @@
+@use "../abstracts" as *;
+
 html {
   font-size: 16px;
 }
 
 body {
-  font-family: var(--font-family-base);
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-optical-sizing: auto;
   line-height: 1.6;
 }
 
-h1,
+h1 {
+  font-family: "Sansation", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: $primary-color;
+}
+
 h2,
 h3,
 h4,
@@ -16,8 +29,11 @@ h6 {
   font-weight: bold;
   margin-bottom: 1rem;
   line-height: 1.2;
+  // إذا حاب تعطيهم Roboto مثلاً أو تتركهم على الافتراضي
 }
 
 p {
   margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: var(--color-text-light); // إذا عندك لون نص خفيف
 }

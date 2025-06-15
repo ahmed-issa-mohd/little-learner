@@ -2,18 +2,8 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  background-color: var(--color-bg);
-  color: var(--color-text);
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-a {
-  color: #fff;
-  text-decoration: none;
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }

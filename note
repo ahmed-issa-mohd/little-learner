@@ -1,0 +1,66 @@
+git checkout -b header
+git add .
+git commit -m "Build header section"
+git push -u origin header
+
+
+
+لضمان توفر المتغيرات مثل $font-md داخل ملفات أخرى (مثلاً typography.scss) قمنا باستخدام:
+
+ 
+@use "../abstracts/variables" as vars;
+
+body {
+  font-size: vars.$font-md;
+}
+
+
+
+sass\abstracts
+cat sass/abstracts/_placeholders.scss sass/abstracts/_mixins.scss sass/abstracts/_variables.scss sass/abstracts/index.scss
+
+sass\base
+cat sass/base/_base.scss sass/base/_reset.scss sass/base/_typography.scss
+
+cat sass/layout/_header.scss 
+
+; SASS FOLDER AND FILES
+find . -mindepth 1 -not -path "./node_modules/*" -printf "%P\n"
+
+
+متطلبات ظهور الهيدر على الشاشات المختلفة
+1. شاشات الموبايل (حتى 575px تقريبًا):
+اللوجو: يكون في أقصى اليسار.
+
+زر الهامبرغر (burger): يكون في أقصى اليمين.
+
+القائمة (.header__nav) وزر "إنشاء الحساب" (.header__cta) مخفية بشكل افتراضي.
+
+عند الضغط على زر الهامبرغر، يضاف .active على .header فتظهر القائمة والزر.
+
+قائمة الروابط (.header__nav-list): تكون عمودية مع تباعد (gap).
+
+النص داخل القائمة يكون منتصف (text-align: center).
+
+زر "إنشاء الحساب" يكون بحجم صغير ($btn-padding-sm و$btn-font-sm) ومركز تحت الروابط.
+
+___________________
+2. شاشات التابلت (من 768px إلى 1023px):
+زر الهامبرغر مخفي.
+
+القائمة (.header__nav) تظهر كقائمة أفقية.
+
+قائمة الروابط (.header__nav-list) أفقية مع تباعد كبير (2rem).
+
+زر "إنشاء الحساب" يظهر بجانب الروابط بحجم متوسط ($btn-padding-md و$btn-font-md).
+_______________________
+3. شاشات الديسكتوب (من 1024px فما فوق):
+زر الهامبرغر مخفي.
+
+القائمة (.header__nav) تظهر أفقيًا.
+
+قائمة الروابط (.header__nav-list) أفقية مع تباعد مناسب.
+
+زر "إنشاء الحساب" يظهر بحجم أكبر ($btn-padding-lg و$btn-font-lg).
+
+زر "إنشاء الحساب" يبقى ظاهر دائمًا على أقصى اليمين بجانب القائمة.

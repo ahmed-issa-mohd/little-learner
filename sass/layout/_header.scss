@@ -1,15 +1,221 @@
-@use "../abstracts/mixins" as mixins;
+@use "../abstracts" as *;
 
-header .container {
-  @include mixins.respond(md) {
+.header {
+  &__container {
+    @extend %container;
+    @extend %flex-between;
+    flex-wrap: wrap;
+    padding: 1rem 0;
   }
 
-  @include mixins.respond(lg) {
+  &__logo {
+    order: 1;
   }
 
-  @include mixins.respond(xl) {
+  &__burger {
+    order: 3;
+    cursor: pointer;
+    display: block;
+
+    i {
+      font-size: $font-xl;
+      transition: transform 0.3s ease;
+    }
   }
 
-  @include mixins.respond(xxl) {
+  &__nav {
+    order: 4;
+    width: 100%;
+    display: none; // مخفي بشكل افتراضي على الموبايل
+    margin: 1rem 0;
+  }
+
+  &__nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+  .header__nav-link {
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.3s ease;
+    font-size: clamp(0.9rem, 1.2vw, 1rem);
+    position: relative;
+
+    // تأثير hover
+    &:hover {
+      color: $secondary-color; // أو أي لون تحبه للتفاعل
+      transform: translateY(-2px);
+
+      &::after {
+        width: 100%;
+      }
+    }
+
+    // خط متحرك تحت الرابط عند hover
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      height: 2px;
+      width: 0;
+      background-color: $secondary-color;
+      transition: width 0.3s ease;
+    }
+
+    // ✅ حجم الخط للموبايل
+    @include mobile {
+      font-size: 1rem;
+    }
+
+    // ✅ حجم الخط للديسكتوب
+    @include desktop {
+      font-size: 1.1rem;
+    }
+  }
+
+  &__cta {
+    order: 5;
+    width: 100%;
+    margin-top: $spacing-md;
+    display: none; // مخفي بشكل افتراضي على الموبايل
+  }
+
+  // ✅ عند تفعيل كلاس active
+  &.active {
+    .header__nav,
+    .header__cta {
+      display: flex !important;
+    }
+
+    .header__burger i::before {
+      content: "\f00d"; // Unicode for fa-times
+      font-family: "Font Awesome 5 Free"; // تأكد من استخدام النسخة الصحيحة
+      font-weight: 900; // للـ solid icons
+    }
+  }
+
+  // ✅ ميديا كويري للموبايل
+  @include mobile {
+    &__cta {
+      width: 100%;
+      flex-direction: column;
+      gap: $spacing-sm;
+
+      .btn {
+        width: 100%; // ✅ الزر نفسه يمتد بعرض الحاوية
+      }
+    }
+    &__burger {
+      display: block;
+    }
+
+    &__nav-list {
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+
+  // ✅ ميديا كويري للتابلت وفوق
+  @include tablet {
+    &__nav {
+      order: 2;
+      width: auto;
+      display: flex !important;
+      align-items: center;
+      margin: 0;
+    }
+
+    &__nav-list {
+      flex-direction: row;
+      width: auto;
+      gap: $spacing-lg;
+    }
+
+    &__nav-link {
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease, transform 0.3s ease;
+      font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -3px;
+        height: 2px;
+        width: 0;
+        background-color: $secondary-color;
+        transition: width 0.3s ease;
+      }
+
+      &:hover {
+        color: $secondary-color;
+        transform: translateY(-2px);
+
+        &::after {
+          width: 100%;
+        }
+      }
+
+      @include mobile {
+        font-size: 1rem;
+      }
+
+      @include tablet {
+        font-size: 1.05rem;
+      }
+
+      @include desktop {
+        font-size: 1.1rem;
+      }
+    }
+
+    &__cta {
+      order: 3;
+      width: auto;
+      margin-top: 0;
+      display: flex;
+      gap: $spacing-sm;
+      .btn {
+        width: auto; // ✅ لكي لا يمتد الزر بكامل العرض
+      }
+    }
+
+    &__burger {
+      display: none;
+    }
+  }
+
+  @include desktop {
+    &__nav {
+      order: 2;
+      width: auto;
+      display: flex !important;
+      align-items: center;
+      margin: 0;
+    }
+
+    &__nav-list {
+      flex-direction: row;
+      gap: $spacing-lg;
+    }
+
+    &__cta {
+      order: 3;
+      width: auto;
+      margin-top: 0;
+      display: flex;
+      gap: $spacing-sm;
+      .btn {
+        width: auto; // ✅ لكي لا يمتد الزر بكامل العرض
+      }
+    }
+
+    &__burger {
+      display: none;
+    }
   }
 }

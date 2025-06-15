@@ -1,17 +1,99 @@
 <!DOCTYPE html>
-<html lang="ar" dir="ltr" data-theme="light"> <!-- أو "dark" -->
-
+<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>اختبار هيكل المشروع</title>
-    <link rel="stylesheet" href="dist/css/main.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-papm1rZp6Q9Q+6l0e6QkZ4fU6Y4ZCkxzgv2F1wKk5Qw8Qw5Qw5Qw5Qw5Qw5Qw5Qw5Qw5Qw5Qw5Qw5Qw5Qw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Responsive Header</title>
+
+    <!-- Font Awesome for burger icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <!-- Your CSS -->
+    <link rel="stylesheet" href="./dist/css/main.css" />
+
 </head>
 
-<body>Ahmed</body>
+<body>
+
+    <header class="header">
+        <div class="header__container">
+
+            <!-- Logo -->
+            <div class="header__logo">
+                <img src="images/logoipsum-332.svg" alt="Logo" />
+
+            </div>
+
+            <!-- Navigation -->
+            <nav class="header__nav">
+                <ul class="header__nav-list">
+                    <li class="header__nav-item">
+                        <a href="#" class="header__nav-link">Home</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="#" class="header__nav-link">About</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="#" class="header__nav-link">Services</a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a href="#" class="header__nav-link">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- CTA Buttons -->
+            <div class="header__cta">
+                <a href="#" class="btn btn--secondary">Login</a>
+                <a href="#" class="btn">Create Account</a>
+            </div>
+
+
+            <!-- Burger Menu -->
+            <div class="header__burger" id="burger">
+                <i class="fas fa-bars"></i>
+            </div>
+
+        </div>
+    </header>
+    <section class="hero">
+        <div class="hero__container">
+
+            <!-- النصوص والمحتوى -->
+            <div class="hero__content">
+                <h1 class="hero__title">Discover a World of Fun Learning!</h1>
+                <p class="hero__description">
+                    Help your little ones grow smarter and happier through engaging games and lessons crafted for ages 3
+                    to 8.
+                </p>
+                <div class="hero__buttons">
+                    <a href="#" class="btn">Start Learning</a>
+                    <a href="#" class="btn btn--secondary">Watch Demo</a>
+                </div>
+            </div>
+
+            <!-- الصورة -->
+            <div class="hero__image">
+                <img src="images/undraw_adventure-map_3e4p.svg" alt="Happy child learning illustration" />
+            </div>
+        </div>
+    </section>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const header = document.querySelector(".header");
+            const burger = document.querySelector(".header__burger");
+
+            burger.addEventListener("click", function () {
+                header.classList.toggle("active");
+            });
+        });
+    </script>
+
+
+</body>
 
 </html>

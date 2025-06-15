@@ -1,0 +1,140 @@
+@use "../abstracts" as *;
+
+.hero {
+  background-color: $light-color;
+  padding: $spacing-lg 0;
+
+  &__container {
+    @extend %container;
+    display: flex;
+    flex-direction: column; // بشكل افتراضي عمودي للموبايل
+    align-items: center;
+    gap: $spacing-lg;
+  }
+
+  &__content {
+    flex: 1 1 100%;
+    text-align: center;
+
+    h1 {
+      font-size: 2rem;
+      color: $primary-color;
+      margin-bottom: $spacing-md;
+    }
+
+    p {
+      font-size: 1rem;
+      color: $text-color;
+      margin-bottom: $spacing-lg;
+    }
+
+    .btn {
+      padding: $btn-padding-md;
+      font-size: $btn-font-md;
+    }
+  }
+
+  &__image {
+    flex: 1 1 100%;
+    max-width: 300px;
+    margin: 0 auto;
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: $radius-md;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  // موبايل
+  @include mobile {
+    &__container {
+      flex-direction: column;
+      padding: $spacing-md 0;
+    }
+
+    &__content {
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      p {
+        font-size: 0.95rem;
+      }
+    }
+
+    &__image {
+      max-width: 250px;
+      margin-bottom: $spacing-md;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin-bottom: $spacing-sm;
+
+      // عشان ما يكون في مسافة بين الزرين
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  // تابلت - أفقي مع صورة على اليمين
+  @include tablet {
+    &__container {
+      flex-direction: row;
+      align-items: center;
+      gap: $spacing-xl;
+      padding: $spacing-lg 0;
+    }
+
+    &__content {
+      flex: 1 1 60%;
+      text-align: left;
+
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      p {
+        font-size: 1.1rem;
+      }
+    }
+
+    &__image {
+      flex: 1 1 40%;
+      max-width: 400px;
+      margin: 0;
+    }
+  }
+
+  // ديسكتوب - نفس التابلت مع زيادة حجم الصورة والنص
+  @include desktop {
+    &__container {
+      flex-direction: row; // <== أضف هذا السطر
+      padding: $spacing-xl 0;
+      gap: $spacing-xxl;
+    }
+
+    &__content {
+      h1 {
+        font-size: 3rem;
+      }
+
+      p {
+        font-size: 1.2rem;
+      }
+
+      .btn {
+        padding: $btn-padding-lg;
+        font-size: $btn-font-lg;
+      }
+    }
+
+    &__image {
+      max-width: 500px;
+    }
+  }
+}
